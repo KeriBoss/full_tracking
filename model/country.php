@@ -11,4 +11,10 @@ class Country extends Database
         $sql = parent::$connection->prepare("SELECT * FROM tbl_keri004 order by id asc");
         return parent::select($sql);
     }
+    //Get service by id
+    function getCountryById($id){
+        $sql = parent::$connection->prepare("SELECT * FROM tbl_keri004 where id = ?");
+        $sql->bind_param('i',$id);
+        return parent::select($sql);
+    }
 }
