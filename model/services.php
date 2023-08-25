@@ -11,6 +11,14 @@ class Services extends Database
         $sql = parent::$connection->prepare("SELECT * FROM tbl_keri012 order by id asc");
         return parent::select($sql);
     }
+    /**
+     * Nhà cung cấp
+     * function get all data of table keri012
+     */
+    function getAllService(){
+        $sql = parent::$connection->prepare("SELECT * FROM tbl_keri012 order by id asc");
+        return parent::select($sql);
+    }
     //Get service by id
     function getServiceById($id){
         $sql = parent::$connection->prepare("SELECT * FROM tbl_keri012 where id = ?");

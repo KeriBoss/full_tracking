@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 18, 2023 lúc 12:52 PM
+-- Thời gian đã tạo: Th8 25, 2023 lúc 12:37 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.1.12
 
@@ -32,28 +32,50 @@ CREATE TABLE `merchandise` (
   `id_shipment` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `id_type` int(11) NOT NULL,
-  `widht` float NOT NULL,
+  `width` float NOT NULL,
   `height` float NOT NULL,
   `length` float NOT NULL,
   `weight` float NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `merchandise`
+--
+
+INSERT INTO `merchandise` (`id`, `id_shipment`, `quantity`, `id_type`, `width`, `height`, `length`, `weight`, `created_at`) VALUES
+(1, 3, 2, 0, 150, 23, 32, 5, '2023-08-19 13:33:47'),
+(2, 3, 2, 0, 31, 23, 13, 2, '2023-08-19 13:33:47'),
+(3, 5, 2, 7, 23, 70, 170, 50, '2023-08-19 16:12:42'),
+(4, 13, 32, 6, 32, 170, 50, 70, '2023-08-21 17:33:16'),
+(5, 13, 2, 8, 70, 30, 170, 78, '2023-08-22 15:55:25'),
+(8, 5, 53, 6, 54, 5, 4, 5453, '2023-08-22 16:01:33'),
+(9, 17, 2, 6, 2, 31, 311, 32, '2023-08-23 09:20:35');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order_invoice`
+-- Cấu trúc bảng cho bảng `pack_invoice`
 --
 
-CREATE TABLE `order_invoice` (
+CREATE TABLE `pack_invoice` (
   `id` int(11) NOT NULL,
   `id_shipment` int(11) NOT NULL,
-  `pro_detail` text NOT NULL,
+  `type_export` text NOT NULL,
+  `description` text NOT NULL,
   `quantity` int(11) NOT NULL,
-  `id_unit` int(11) NOT NULL,
+  `unit` text NOT NULL,
   `price` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `create_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `pack_invoice`
+--
+
+INSERT INTO `pack_invoice` (`id`, `id_shipment`, `type_export`, `description`, `quantity`, `unit`, `price`, `create_at`) VALUES
+(1, 3, '', 'Sản phẩm tốt', 2, '', 230000, '2023-08-19 13:33:47'),
+(2, 5, '', 'name 1', 12, '', 32100, '2023-08-19 16:12:42');
 
 -- --------------------------------------------------------
 
@@ -147,6 +169,75 @@ INSERT INTO `tbl_keri001` (`id`, `keri001`, `keri002`, `keri003`, `keri004`, `ke
 (28, 'VIETTEL', 'VIETTEL UPS', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (50, 'HANGMOI', 'HÃNG MỚI', 'Hãng mới', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (51, 'ABC', 'ABC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_keri003`
+--
+
+CREATE TABLE `tbl_keri003` (
+  `id` bigint(20) NOT NULL,
+  `keri001` text NOT NULL,
+  `keri002` text NOT NULL,
+  `keri003` text NOT NULL,
+  `keri004` text NOT NULL,
+  `keri005` text NOT NULL,
+  `keri006` text NOT NULL,
+  `keri007` text NOT NULL,
+  `keri008` text NOT NULL,
+  `keri009` text NOT NULL,
+  `keri010` text NOT NULL,
+  `keri011` text NOT NULL,
+  `keri012` text NOT NULL,
+  `keri013` text NOT NULL,
+  `keri014` text NOT NULL,
+  `keri015` text NOT NULL,
+  `keri016` text NOT NULL,
+  `keri017` text NOT NULL,
+  `keri018` text NOT NULL,
+  `keri019` text NOT NULL,
+  `keri020` text NOT NULL,
+  `keri021` text NOT NULL,
+  `keri022` text NOT NULL,
+  `keri023` text NOT NULL,
+  `keri024` text NOT NULL,
+  `keri025` text NOT NULL,
+  `keri026` text NOT NULL,
+  `keri027` text NOT NULL,
+  `keri028` text NOT NULL,
+  `keri029` text NOT NULL,
+  `keri030` text NOT NULL,
+  `keri031` text NOT NULL,
+  `keri032` text NOT NULL,
+  `keri033` text NOT NULL,
+  `keri034` text NOT NULL,
+  `keri035` text NOT NULL,
+  `keri036` text NOT NULL,
+  `keri037` text NOT NULL,
+  `keri038` text NOT NULL,
+  `keri039` text NOT NULL,
+  `keri040` text NOT NULL,
+  `keri041` text NOT NULL,
+  `keri042` text NOT NULL,
+  `keri043` text NOT NULL,
+  `keri044` text NOT NULL,
+  `keri045` text NOT NULL,
+  `keri046` text NOT NULL,
+  `keri047` text NOT NULL,
+  `keri048` text NOT NULL,
+  `keri049` text NOT NULL,
+  `keri050` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_keri003`
+--
+
+INSERT INTO `tbl_keri003` (`id`, `keri001`, `keri002`, `keri003`, `keri004`, `keri005`, `keri006`, `keri007`, `keri008`, `keri009`, `keri010`, `keri011`, `keri012`, `keri013`, `keri014`, `keri015`, `keri016`, `keri017`, `keri018`, `keri019`, `keri020`, `keri021`, `keri022`, `keri023`, `keri024`, `keri025`, `keri026`, `keri027`, `keri028`, `keri029`, `keri030`, `keri031`, `keri032`, `keri033`, `keri034`, `keri035`, `keri036`, `keri037`, `keri038`, `keri039`, `keri040`, `keri041`, `keri042`, `keri043`, `keri044`, `keri045`, `keri046`, `keri047`, `keri048`, `keri049`, `keri050`) VALUES
+(6, 'DOC', 'DOCUMENT', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(8, 'EXCEL', 'EXCEL', '              ', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(7, 'NONDOC', 'NON DOCUMENT', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -582,7 +673,16 @@ INSERT INTO `tbl_keri009` (`id`, `keri001`, `keri002`, `keri003`, `keri004`, `ke
 (14, '12/27/2022', '0004', 'SGB04', 'Hồ Thị Kỷ', 'Nguyễn Thiên An', 'Nguyễn Thiên An', '33 Cộng Hòa', '100 Hoàng Hoa Thám', '', '23.500 VNĐ => 1USD', 'HDB', 'DHL SIN', 'EXPORT EXPRESS', 'DOCUMENT', '	 Vietnam', '004', 'Tấn (1000kg)', '	 100-299', 'NO.1', '08997755', 'VND', '50', '100.000', '20', '30.000', '0', '12', '004', '', '', '50', '50.000', '5', '10', '0.1', '21.000', '0.1', '12.000', '0', 'HTL004', '6500000', '78000000', '5600', '56000', '', '77944000', '', '', '', ''),
 (15, '12/27/2022', '0005', 'SGB05', 'Hồ Thị Kỷ', 'Lê Nguyện Anh', 'Lê Nguyện Anh', '52 Thống Nhất', '33 Đặng Thúc Vịnh', '', '23.500 VNĐ => 1USD', 'HDB', 'DHL EXPRESS', 'HỎA TỐC', 'NON DOCUMENT', '	 Vietnam', '005', 'Tính trên mỗi kg (1kg x TL)', '	 21-44', 'NO.1', '08997755', 'VND', '23', '15.000', '10', '15.000', '0', '12', '005', '', '', '23', '20.000', '5', '10', '0.08695652173913043', '15.000', '0.08695652173913043', '12.000', '0', 'HTL005', '396750', '4761000', '2240', '22400', '', '4738600', '', '', '', ''),
 (20, '12/27/2022', '0003', 'SGB03', 'Nguyễn Văn Hùng', 'Lê Anh Tuấn', 'Lý Anh Kiệt', '100 Lý Thường Kiệt', '301 Lê văn Thọ', '', '23.500 VNĐ => 1USD', 'HDB', 'DHL APAL', 'CHUYÊN TUYẾN JAPAN', 'NON DOCUMENT', '	 Vietnam', '003', '	CONTAINER', '	 20.5-29.5', 'NO.1', '08997755', 'VND', '40', '40.000', '10', '20.000', '0', '12', '003', '', '', '50', '43.000', '5', '10', '0.086', '32.000', '0.086', '15', '0', 'HTL003', '1920000', '23040000', '4945', '49450', '', '22990550', '', '', '', ''),
-(43, '07/25/2023', '12345685205', 'SGB456525882', 'Hà Thủ Ô', 'Lý Anh Kiệt', 'Ngô Hà', 'HCM', 'HCM', 'HCM', '', 'UPS', '51', 'ABC', 'EXCEL', '	 Anguilla', '', 'MÉT KHỐI', '	 500-999', '22000', '10', '1', '500', '2000', '10', '10', '0.1', '25000', 'hd9-078989', 'Không có', 'Không có', '500', '12000', '10', '10', '1200', '25000', '1200', '10', '0.1', 'hdncc565656', '2420.2', '60505000', '31452', '314520', '', '59890480', '', '', '', '');
+(43, '07/25/2023', '12345685205', 'SGB456525882', 'Hà Thủ Ô', 'Lý Anh Kiệt', 'Ngô Hà', 'HCM', 'HCM', 'HCM', '', 'UPS', '51', 'ABC', 'EXCEL', '	 Anguilla', '', 'MÉT KHỐI', '	 500-999', '22000', '10', '1', '500', '2000', '10', '10', '0.1', '25000', 'hd9-078989', 'Không có', 'Không có', '500', '12000', '10', '10', '1200', '25000', '1200', '10', '0.1', 'hdncc565656', '2420.2', '60505000', '31452', '314520', '', '59890480', '', '', '', ''),
+(45, '', '', '', 'Receiver', 'John', '', '', '1292 Ho Chi Minh', '', '', 'FCG', '46', '', 'doc', '11', '', '', '', '', '', '', '77', '', '', '', '', '', '9930925179', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(46, '', '', '', 'Lâm Lê Văn', 'Le LAM', '', 'Ninh Thuan province', 'Thôn Hoài Nhơn, xã Phước Hậu, huyện Ninh Phước', '', '', 'UPS', '15', '', 'doc', 'Afghanistan', '', '', '', '', '', '', '65', '', '', '', '', '', '6458428526', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '6379337190', '', '', ''),
+(47, '', '', '', 'Lê Thành Đạt', 'Devid', '', 'Oxinton', 'Xuân Lộc', '', '', 'NCC1', '17', '', 'doc', 'United States', '', '', '', '', '', '', '69', '', '', '', '', '', '5365506666', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1352129626', '', '', ''),
+(48, '', '', '', 'Le LAM', 'Le LAM', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'doc', '	 Vietnam', '', '', '', '', '', '', '321', '', '', '', '', '', '8493502514', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '9943301326', '', '', ''),
+(49, '', '', '', 'Le LAM', 'Le LAM', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'pack', '	 Vietnam', '', '', '', '', '', '', '23', '', '', '', '', '', '3767133035', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '8551505846', '', '', ''),
+(50, '', '', '', 'Le LAM', 'Le LAM', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'pack', '	 Vietnam', '', '', '', '', '', '', '3213', '', '', '', '', '', '5166724202', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '7900476400', '', '', ''),
+(51, '', '', '', 'Le LAM 22', 'Le LAM 19', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'doc', '	 Vietnam', '', '', '', '', '', '', '32', '', '', '', '', '', '5169423821', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '3572486149', '', '', ''),
+(52, '', '', '', 'Lâm', 'Lâm', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'doc', '	 Vietnam', '', '', '', '', '', '', '44', '', '', '', '', '', '6421760158', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '5623901211', '', '', ''),
+(53, '', '', '', 'Le LAM', 'Lâm', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'pack', '	 Vietnam', '', '', '', '', '', '', '244', '', '', '', '', '', '5000277044', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1455076256', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -841,6 +941,8 @@ CREATE TABLE `tbl_keri31` (
   `keri020` text NOT NULL,
   `keri021` text NOT NULL,
   `kg_bill` bigint(20) NOT NULL,
+  `status` text NOT NULL,
+  `print_label` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -848,9 +950,20 @@ CREATE TABLE `tbl_keri31` (
 -- Đang đổ dữ liệu cho bảng `tbl_keri31`
 --
 
-INSERT INTO `tbl_keri31` (`id`, `keri001`, `keri002`, `keri003`, `keri004`, `keri005`, `keri006`, `keri007`, `keri008`, `keri009`, `keri010`, `keri011`, `keri012`, `keri013`, `keri014`, `keri015`, `keri016`, `keri017`, `keri018`, `keri019`, `keri020`, `keri021`, `kg_bill`, `created_at`) VALUES
-(1, '7', '6', '', 'doc', '0', '3', '21', '21', '21', '3', '', '21', '21', '4', '10', '5', '5', '', '5125', '512', '', 0, '2023-08-18 15:57:59'),
-(2, '7', '6', '', 'doc', '0', '3213', 'rwqr', 'rqwrqwr', 'wrqwrqw', '3214214', '', 'rqwrqw', 'sggaha', '4124214', '10', '21421', '2fawfawsf', '', 'rqwrqwr', 'rqwrqwr', '', 1876211747, '2023-08-18 16:17:38');
+INSERT INTO `tbl_keri31` (`id`, `keri001`, `keri002`, `keri003`, `keri004`, `keri005`, `keri006`, `keri007`, `keri008`, `keri009`, `keri010`, `keri011`, `keri012`, `keri013`, `keri014`, `keri015`, `keri016`, `keri017`, `keri018`, `keri019`, `keri020`, `keri021`, `kg_bill`, `status`, `print_label`, `created_at`) VALUES
+(2, '7', '6', '', 'doc', '0', '3213', 'rwqr', 'rqwrqwr', 'wrqwrqw', '3214214', '', 'rqwrqw', 'sggaha', '4124214', '10', '21421', '2fawfawsf', '', 'rqwrqwr', 'rqwrqwr', '', 1876211747, '', '', '2023-08-18 16:17:38'),
+(3, '7', '6', '213123', 'pack', '2', '200', 'Cong ty New', 'Nguyen Van A', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Cong tyN News', 'Le LAM', '0359893447', '293', '22222', 'Ninh Phước', '', 'Ninh Thuan province', 'Ninh Thuan', '', 8840314118, '', '', '2023-08-19 13:33:47'),
+(5, '7', '6', '4214', 'pack', '1', '66', 'Company 1', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2', 'Lâm Lê Văn', '0359893447', '10', '4214', 'Ninh Thuận', '', 'Thôn Hoài Nhơn, xã Phước Hậu, huyện Ninh Phước', 'Ho Chi Minh', '', 2573713840, '', '', '2023-08-19 16:12:42'),
+(7, '8', '46', '', 'doc', '2', '77', 'Company 1', 'John', '1992 Vigna', '0126125244', 'admin@gmail.com', 'Company 2', 'Receiver', '0126125244', '11', '14141', 'Ho Chi Minh', '', '1292 Ho Chi Minh', '1292 Ho Chi Minh', '', 5283679217, '', '', '2023-08-21 09:51:40'),
+(9, '8', '46', '', 'doc', '2', '77', 'Company 1', 'John', '1992 Vigna', '0126125244', 'admin@gmail.com', 'Company 2', 'Receiver', '0126125244', '11', '14141', 'Ho Chi Minh', '', '1292 Ho Chi Minh', '1292 Ho Chi Minh', '', 9930925179, '', '', '2023-08-21 09:53:45'),
+(10, '38', '15', '32133', 'doc', '2', '65', 'Company 1.1', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2.1', 'Lâm Lê Văn', '0359893447', '10', '21314124', 'Ninh Thuận', '', 'Thôn Hoài Nhơn, xã Phước Hậu, huyện Ninh Phước', 'Thôn Hoài Nhơn, xã Phước Hậu, huyện Ninh Phước', '', 6458428526, '', '', '2023-08-21 10:43:39'),
+(11, '40', '17', '321938', 'doc', '5', '69', 'Company 1.2', 'Devid', 'Oxinton', '012321421', 'admin11283@gmail.com', 'Company 2.3', 'Lê Thành Đạt', '0123214542', '11', '123217', 'Bình Dương', 'Bình Dương', 'Xuân Lộc', 'Xuân Lộc', '', 5365506666, '', '', '2023-08-21 15:30:35'),
+(12, '7', '6', '', 'doc', '0', '321', '412', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2', 'Le LAM', '0359893447', '293', '3123', 'Ninh Phước', '', 'Ninh Thuan province', 'mi', '', 8493502514, '', '', '2023-08-21 17:32:46'),
+(13, '7', '6', '', 'pack', '0214', '23', 'Company 1', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2', 'Le LAM', '0359893447', '293', '3123', 'Ninh Phước', '', 'Ninh Thuan province', '3213', '', 3767133035, '', '', '2023-08-21 17:33:16'),
+(14, '7', '6', '321', 'pack', '032', '3213', 'Company 1', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2', 'Le LAM', '0359893447', '293', '23', 'Ninh Phước', '', 'Ninh Thuan province', 'fsdf', '', 5166724202, '', '', '2023-08-21 18:01:26'),
+(15, '7', '6', '', 'doc', '0', '32', 'Company 19', 'Le LAM 19', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 22', 'Le LAM 22', '0359893447', '293', '2314', 'Ninh Phước', '', 'Ninh Thuan province', 'hcm', '', 5169423821, '', '', '2023-08-23 08:47:00'),
+(16, '7', '6', '', 'doc', '0', '44', 'Company 1', 'Lâm', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Lâm', 'Lâm', '0359893447', '293', '654', 'Ninh Phước', '', 'Ninh Thuan province', 'Lâm', '', 6421760158, '', '', '2023-08-23 09:20:10'),
+(17, '39', '6', '26112', 'pack', '2', '49', 'Lâm update 2', 'Lâm update', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Lâm', 'Le LAM', '0359893447', '293', '34214', 'Ninh Phước', '', 'Ninh Thuan province', 'Lâm', '', 5000277044, '', 'Đã in label', '2023-08-23 09:20:35');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -863,15 +976,21 @@ ALTER TABLE `merchandise`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `order_invoice`
+-- Chỉ mục cho bảng `pack_invoice`
 --
-ALTER TABLE `order_invoice`
+ALTER TABLE `pack_invoice`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `tbl_keri001`
 --
 ALTER TABLE `tbl_keri001`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `tbl_keri003`
+--
+ALTER TABLE `tbl_keri003`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -918,19 +1037,25 @@ ALTER TABLE `tbl_keri31`
 -- AUTO_INCREMENT cho bảng `merchandise`
 --
 ALTER TABLE `merchandise`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT cho bảng `order_invoice`
+-- AUTO_INCREMENT cho bảng `pack_invoice`
 --
-ALTER TABLE `order_invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `pack_invoice`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_keri001`
 --
 ALTER TABLE `tbl_keri001`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_keri003`
+--
+ALTER TABLE `tbl_keri003`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_keri004`
@@ -942,7 +1067,7 @@ ALTER TABLE `tbl_keri004`
 -- AUTO_INCREMENT cho bảng `tbl_keri009`
 --
 ALTER TABLE `tbl_keri009`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_keri010`
@@ -966,7 +1091,7 @@ ALTER TABLE `tbl_keri014`
 -- AUTO_INCREMENT cho bảng `tbl_keri31`
 --
 ALTER TABLE `tbl_keri31`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
