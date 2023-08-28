@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 25, 2023 lúc 12:37 PM
+-- Thời gian đã tạo: Th8 28, 2023 lúc 12:30 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.1.12
 
@@ -36,6 +36,7 @@ CREATE TABLE `merchandise` (
   `height` float NOT NULL,
   `length` float NOT NULL,
   `weight` float NOT NULL,
+  `tracking_pack` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -43,14 +44,16 @@ CREATE TABLE `merchandise` (
 -- Đang đổ dữ liệu cho bảng `merchandise`
 --
 
-INSERT INTO `merchandise` (`id`, `id_shipment`, `quantity`, `id_type`, `width`, `height`, `length`, `weight`, `created_at`) VALUES
-(1, 3, 2, 0, 150, 23, 32, 5, '2023-08-19 13:33:47'),
-(2, 3, 2, 0, 31, 23, 13, 2, '2023-08-19 13:33:47'),
-(3, 5, 2, 7, 23, 70, 170, 50, '2023-08-19 16:12:42'),
-(4, 13, 32, 6, 32, 170, 50, 70, '2023-08-21 17:33:16'),
-(5, 13, 2, 8, 70, 30, 170, 78, '2023-08-22 15:55:25'),
-(8, 5, 53, 6, 54, 5, 4, 5453, '2023-08-22 16:01:33'),
-(9, 17, 2, 6, 2, 31, 311, 32, '2023-08-23 09:20:35');
+INSERT INTO `merchandise` (`id`, `id_shipment`, `quantity`, `id_type`, `width`, `height`, `length`, `weight`, `tracking_pack`, `created_at`) VALUES
+(1, 3, 2, 0, 150, 23, 32, 5, '', '2023-08-19 13:33:47'),
+(2, 3, 2, 0, 31, 23, 13, 2, '', '2023-08-19 13:33:47'),
+(3, 5, 2, 7, 23, 70, 170, 50, '', '2023-08-19 16:12:42'),
+(4, 13, 32, 6, 32, 170, 50, 70, '', '2023-08-21 17:33:16'),
+(5, 13, 2, 8, 70, 30, 170, 78, '', '2023-08-22 15:55:25'),
+(8, 5, 53, 6, 54, 5, 4, 5453, '', '2023-08-22 16:01:33'),
+(9, 17, 2, 6, 2, 31, 311, 32, '', '2023-08-23 09:20:35'),
+(10, 22, 2, 6, 30, 40, 170, 50, '8606973288', '2023-08-28 15:34:20'),
+(11, 22, 1, 8, 40, 30, 165, 55, '8606973288', '2023-08-28 15:34:20');
 
 -- --------------------------------------------------------
 
@@ -76,6 +79,27 @@ CREATE TABLE `pack_invoice` (
 INSERT INTO `pack_invoice` (`id`, `id_shipment`, `type_export`, `description`, `quantity`, `unit`, `price`, `create_at`) VALUES
 (1, 3, '', 'Sản phẩm tốt', 2, '', 230000, '2023-08-19 13:33:47'),
 (2, 5, '', 'name 1', 12, '', 32100, '2023-08-19 16:12:42');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `status_order`
+--
+
+CREATE TABLE `status_order` (
+  `id` int(11) NOT NULL,
+  `status_name` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `status_order`
+--
+
+INSERT INTO `status_order` (`id`, `status_name`) VALUES
+(1, 'Đang nhận hàng'),
+(2, 'Đang làm thủ tục hải quan'),
+(3, 'Đang vận chuyển'),
+(4, 'Đang xác nhận');
 
 -- --------------------------------------------------------
 
@@ -682,7 +706,12 @@ INSERT INTO `tbl_keri009` (`id`, `keri001`, `keri002`, `keri003`, `keri004`, `ke
 (50, '', '', '', 'Le LAM', 'Le LAM', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'pack', '	 Vietnam', '', '', '', '', '', '', '3213', '', '', '', '', '', '5166724202', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '7900476400', '', '', ''),
 (51, '', '', '', 'Le LAM 22', 'Le LAM 19', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'doc', '	 Vietnam', '', '', '', '', '', '', '32', '', '', '', '', '', '5169423821', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '3572486149', '', '', ''),
 (52, '', '', '', 'Lâm', 'Lâm', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'doc', '	 Vietnam', '', '', '', '', '', '', '44', '', '', '', '', '', '6421760158', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '5623901211', '', '', ''),
-(53, '', '', '', 'Le LAM', 'Lâm', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'pack', '	 Vietnam', '', '', '', '', '', '', '244', '', '', '', '', '', '5000277044', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1455076256', '', '', '');
+(53, '', '', '', 'Le LAM', 'Lâm', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'HDB', '6', '', 'pack', '	 Vietnam', '', '', '', '', '', '', '244', '', '', '', '', '', '5000277044', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1455076256', '', '', ''),
+(54, '', '', '', 'Manager', 'Jimmin', '', 'Korea', 'Korea', '', '', 'NCC1', '23', '', 'doc', '	 Namibia', '', '', '', '', '', '', '77', '', '', '', '', '', '1166388752', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '3368310139', '', '', ''),
+(55, '', '', '', 'New reiceiver', 'New sender', '', '213 verga', 'New city', '', '', 'UPS', '50', '', 'doc', '	 Wales (United Kingdom)', '', '', '', '', '', '', '66', '', '', '', '', '', '3386657985', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '9502204429', '', '', ''),
+(56, '', '', '', 'Le LAM', 'Le LAM', '', 'Ninh Thuan province', 'Ninh Thuan province', '', '', 'UPS', '6', '', 'doc', '	 Vietnam', '', '', '', '', '', '', '66', '', '', '', '', '', '8226522542', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2873755450', '', '', ''),
+(58, '', '', '', 'New Name', 'Lê Thành Đạt', '', 'Quảng Ngãi', 'Ninh Thuan province', '', '', 'UPS', '18', '', 'pack', '	 Greece', '', '', '', '', '', '', '68', '', '', '', '', '', '3347164116', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '8606973288', '', '', ''),
+(59, '', '', '', '4', '4', '', '4', '234', '', '', 'HDB', '6', '', 'doc', 'Afghanistan', '', '', '', '', '', '', '3213', '', '', '', '', '', '5219434993', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2906580799', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -955,15 +984,73 @@ INSERT INTO `tbl_keri31` (`id`, `keri001`, `keri002`, `keri003`, `keri004`, `ker
 (3, '7', '6', '213123', 'pack', '2', '200', 'Cong ty New', 'Nguyen Van A', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Cong tyN News', 'Le LAM', '0359893447', '293', '22222', 'Ninh Phước', '', 'Ninh Thuan province', 'Ninh Thuan', '', 8840314118, '', '', '2023-08-19 13:33:47'),
 (5, '7', '6', '4214', 'pack', '1', '66', 'Company 1', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2', 'Lâm Lê Văn', '0359893447', '10', '4214', 'Ninh Thuận', '', 'Thôn Hoài Nhơn, xã Phước Hậu, huyện Ninh Phước', 'Ho Chi Minh', '', 2573713840, '', '', '2023-08-19 16:12:42'),
 (7, '8', '46', '', 'doc', '2', '77', 'Company 1', 'John', '1992 Vigna', '0126125244', 'admin@gmail.com', 'Company 2', 'Receiver', '0126125244', '11', '14141', 'Ho Chi Minh', '', '1292 Ho Chi Minh', '1292 Ho Chi Minh', '', 5283679217, '', '', '2023-08-21 09:51:40'),
-(9, '8', '46', '', 'doc', '2', '77', 'Company 1', 'John', '1992 Vigna', '0126125244', 'admin@gmail.com', 'Company 2', 'Receiver', '0126125244', '11', '14141', 'Ho Chi Minh', '', '1292 Ho Chi Minh', '1292 Ho Chi Minh', '', 9930925179, '', '', '2023-08-21 09:53:45'),
+(9, '8', '46', '', 'doc', '2', '77', 'Company 1', 'John', '1992 Vigna', '0126125244', 'admin@gmail.com', 'Company 2', 'Receiver', '0126125244', '11', '14141', 'Ho Chi Minh', '', '1292 Ho Chi Minh', '1292 Ho Chi Minh', '', 9930925179, '', 'Đã in label', '2023-08-21 09:53:45'),
 (10, '38', '15', '32133', 'doc', '2', '65', 'Company 1.1', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2.1', 'Lâm Lê Văn', '0359893447', '10', '21314124', 'Ninh Thuận', '', 'Thôn Hoài Nhơn, xã Phước Hậu, huyện Ninh Phước', 'Thôn Hoài Nhơn, xã Phước Hậu, huyện Ninh Phước', '', 6458428526, '', '', '2023-08-21 10:43:39'),
 (11, '40', '17', '321938', 'doc', '5', '69', 'Company 1.2', 'Devid', 'Oxinton', '012321421', 'admin11283@gmail.com', 'Company 2.3', 'Lê Thành Đạt', '0123214542', '11', '123217', 'Bình Dương', 'Bình Dương', 'Xuân Lộc', 'Xuân Lộc', '', 5365506666, '', '', '2023-08-21 15:30:35'),
 (12, '7', '6', '', 'doc', '0', '321', '412', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2', 'Le LAM', '0359893447', '293', '3123', 'Ninh Phước', '', 'Ninh Thuan province', 'mi', '', 8493502514, '', '', '2023-08-21 17:32:46'),
 (13, '7', '6', '', 'pack', '0214', '23', 'Company 1', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2', 'Le LAM', '0359893447', '293', '3123', 'Ninh Phước', '', 'Ninh Thuan province', '3213', '', 3767133035, '', '', '2023-08-21 17:33:16'),
 (14, '7', '6', '321', 'pack', '032', '3213', 'Company 1', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 2', 'Le LAM', '0359893447', '293', '23', 'Ninh Phước', '', 'Ninh Thuan province', 'fsdf', '', 5166724202, '', '', '2023-08-21 18:01:26'),
-(15, '7', '6', '', 'doc', '0', '32', 'Company 19', 'Le LAM 19', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 22', 'Le LAM 22', '0359893447', '293', '2314', 'Ninh Phước', '', 'Ninh Thuan province', 'hcm', '', 5169423821, '', '', '2023-08-23 08:47:00'),
+(15, '7', '6', '', 'doc', '0', '32', 'Company 19', 'Le LAM 19', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 22', 'Le LAM 22', '0359893447', '293', '2314', 'Ninh Phước', '', 'Ninh Thuan province', 'hcm', '', 5169423821, '', 'Đã in label', '2023-08-23 08:47:00'),
 (16, '7', '6', '', 'doc', '0', '44', 'Company 1', 'Lâm', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Lâm', 'Lâm', '0359893447', '293', '654', 'Ninh Phước', '', 'Ninh Thuan province', 'Lâm', '', 6421760158, '', '', '2023-08-23 09:20:10'),
-(17, '39', '6', '26112', 'pack', '2', '49', 'Lâm update 2', 'Lâm update', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Lâm', 'Le LAM', '0359893447', '293', '34214', 'Ninh Phước', '', 'Ninh Thuan province', 'Lâm', '', 5000277044, '', 'Đã in label', '2023-08-23 09:20:35');
+(17, '39', '6', '26112', 'pack', '2', '49', 'Lâm update 2', 'Lâm update', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Lâm', 'Le LAM', '0359893447', '293', '34214', 'Ninh Phước', '', 'Ninh Thuan province', 'Lâm', '', 5000277044, '', 'Đã in label', '2023-08-23 09:20:35'),
+(18, '40', '23', '2414', 'doc', '2', '77', 'Tấn Phát TNHH', 'Jimmin', 'Korea', '0462137444', 'bangtang@gmail.com', 'BG', 'Manager', '052525456', '189', '325235', 'Korea', 'Korea', 'Korea', 'Korea', '', 1166388752, 'Đang chờ', '', '2023-08-28 13:21:40'),
+(19, '38', '50', '4214', 'doc', '05', '66', 'Company THNN 2', 'New sender', '213 verga', '0123456555', 'agency1@gmail.com', 'Company 29', 'New reiceiver', '0122346623', '295', '132144', 'New city', '', 'New city', 'New city', '', 3386657985, 'Đang chờ', '', '2023-08-28 14:24:58'),
+(20, '38', '6', '4214', 'doc', '04', '66', 'Company THNN', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 29', 'Le LAM', '0359893447', '293', '4235435', 'Ninh Phước', '', 'Ninh Thuan province', '4324234', '', 8226522542, 'Đang chờ', '', '2023-08-28 14:26:46'),
+(21, '7', '6', '4214', 'doc', '02', '66', '12', 'Le LAM', 'Ninh Thuan province', '0359893447', 'levanlam3447@gmail.com', 'Company 29', 'Le LAM', '0359893447', '293', '4234', 'Ninh Phước', '', 'Ninh Thuan province', '4214', '', 3626411327, 'Đang chờ', '', '2023-08-28 14:27:39'),
+(22, '38', '18', '2223', 'pack', '04', '68', 'Công ty TNHH', 'Lê Thành Đạt', 'Quảng Ngãi', '098238523', 'ThanhDatj@gmail.com', 'Công ty Receiver', 'New Name', '0215424423', '108', '342342', 'Tp Ho Chi Minh', 'Quang Nam', 'Ninh Thuan province', 'Quang Nam', 'Quang Nam', 3347164116, 'Đang chờ', '', '2023-08-28 15:34:20'),
+(23, '7', '6', '', 'doc', '0', '3213', '324234', '4', '4', '4', '', '4', '4', '9999999999999999', '10', '44', '4', '', '234', '32', '', 5219434993, 'Đang chờ', 'Đã in label', '2023-08-28 16:19:19');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tracking`
+--
+
+CREATE TABLE `tracking` (
+  `id` int(11) NOT NULL,
+  `tracking_number` text NOT NULL,
+  `date_send` date NOT NULL,
+  `date_ksg` text NOT NULL,
+  `date_origin` text NOT NULL,
+  `date_transit` text NOT NULL,
+  `transport_tracking` text NOT NULL,
+  `standard_ship` datetime NOT NULL,
+  `policy` text NOT NULL,
+  `paper_package` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tracking`
+--
+
+INSERT INTO `tracking` (`id`, `tracking_number`, `date_send`, `date_ksg`, `date_origin`, `date_transit`, `transport_tracking`, `standard_ship`, `policy`, `paper_package`, `created_at`) VALUES
+(1, '3368310139', '2023-08-28', '2023-08-28', '2023-08-28', '2023-08-28', 'Tan Son Nhat AirPort', '2023-08-29 15:26:07', 'Sender', 'Package', '2023-08-28 13:21:40'),
+(2, '9502204429', '0000-00-00', '', '', '', '', '0000-00-00 00:00:00', 'Sender', 'Package', '2023-08-28 14:24:58'),
+(3, '2873755450', '0000-00-00', '', '', '', '', '0000-00-00 00:00:00', 'Sender', 'Package', '2023-08-28 14:26:46'),
+(4, '8606973288', '0000-00-00', '', '', '', '', '0000-00-00 00:00:00', 'Sender', 'Package', '2023-08-28 15:34:20'),
+(5, '2906580799', '0000-00-00', '', '', '', '', '0000-00-00 00:00:00', 'Sender', 'Package', '2023-08-28 16:19:19');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` text NOT NULL,
+  `email` text NOT NULL,
+  `password` text NOT NULL,
+  `role` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
+(1, 'Admin', 'admin@gmail.com', '123456', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -979,6 +1066,12 @@ ALTER TABLE `merchandise`
 -- Chỉ mục cho bảng `pack_invoice`
 --
 ALTER TABLE `pack_invoice`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `status_order`
+--
+ALTER TABLE `status_order`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1030,6 +1123,18 @@ ALTER TABLE `tbl_keri31`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `tracking`
+--
+ALTER TABLE `tracking`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -1037,13 +1142,19 @@ ALTER TABLE `tbl_keri31`
 -- AUTO_INCREMENT cho bảng `merchandise`
 --
 ALTER TABLE `merchandise`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `pack_invoice`
 --
 ALTER TABLE `pack_invoice`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `status_order`
+--
+ALTER TABLE `status_order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_keri001`
@@ -1067,7 +1178,7 @@ ALTER TABLE `tbl_keri004`
 -- AUTO_INCREMENT cho bảng `tbl_keri009`
 --
 ALTER TABLE `tbl_keri009`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_keri010`
@@ -1091,7 +1202,19 @@ ALTER TABLE `tbl_keri014`
 -- AUTO_INCREMENT cho bảng `tbl_keri31`
 --
 ALTER TABLE `tbl_keri31`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT cho bảng `tracking`
+--
+ALTER TABLE `tracking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -49,9 +49,9 @@ class OrderShipment extends Database
     /**
      * 
      */
-    function insertPackDetail($id_shipment,$quantity,$id_type,$width,$height,$length,$weight){
-        $sql = parent::$connection->prepare("INSERT INTO `merchandise`(`id_shipment`, `quantity`, `id_type`, `width`, `height`, `length`, `weight`) VALUES (?,?,?,?,?,?,?)");
-        $sql->bind_param('iiiiiii', $id_shipment,$quantity,$id_type,$width,$height,$length,$weight);
+    function insertPackDetail($id_shipment,$quantity,$id_type,$width,$height,$length,$weight,$tracking_pack){
+        $sql = parent::$connection->prepare("INSERT INTO `merchandise`(`id_shipment`, `quantity`, `id_type`, `width`, `height`, `length`, `weight`,`tracking_pack`) VALUES (?,?,?,?,?,?,?,?)");
+        $sql->bind_param('iiiiiiis', $id_shipment,$quantity,$id_type,$width,$height,$length,$weight,$tracking_pack);
         return $sql->execute();
     }
     /**
@@ -96,7 +96,7 @@ class OrderShipment extends Database
      * Function get all data of table order shipment
      */
     function sortShipmentByDate($date_start,$date_end){
-        $sql = parent::$connection->prepare("SELECT * FROM tbl_keri31 WHERE tbl_keri31.created_at between ? and ?");
+        $sql = parent::$connection->prepare("SELECT * FROM tbl_keri31 WHERE tbl_keri31.created_at between ? and ? desc");
         $sql->bind_param('ss',$date_start,$date_end);
         return parent::select($sql);
     }
@@ -113,24 +113,47 @@ class OrderShipment extends Database
     function sortOrderMultibleOption($order_id,$number_sgb,$phone_receiver,$address_receiver,$date_book){
         $str = "";
 
-            if($order_id != '' ){
+        if($order_id != '' ){
+            if($str == ''){
+                $str = " WHERE tbl_keri31.id = $order_id";
+            }else{
                 $str .= " AND tbl_keri31.id = $order_id";
             }
-            if($number_sgb  != '' ){
+        }
+        if($number_sgb  != '' ){
+            if($str == ''){
+                $str = " WHERE tbl_keri009.keri003 = $number_sgb";
+            }else{
                 $str .= " AND tbl_keri009.keri003 = $number_sgb";
+                
             }
-            if($phone_receiver != '' ){
+        }
+        if($phone_receiver != '' ){
+            if($str == ''){
+                $str = " WHERE tbl_keri31.keri014 = $phone_receiver";
+            }else{
                 $str .= " AND tbl_keri31.keri014 = $phone_receiver";
+                
             }
-            if($address_receiver != '' ){
+        }
+        if($address_receiver != '' ){
+            if($str == ''){
+                $str = " WHERE tbl_keri31.keri019 = $address_receiver";
+            }else{
                 $str .= " AND tbl_keri31.keri019 = $address_receiver";
+                
             }
-            if($date_book != '' ){
+        }
+        if($date_book != '' ){
+            if($str == ''){
+                $str = " WHERE tbl_keri31.created_at >= $date_book";
+            }else{
                 $str .= " AND tbl_keri31.created_at >= $date_book";
+                
             }
+        }
         
-        $sql = parent::$connection->prepare("SELECT tbl_keri31 FROM tbl_keri31,tbl_keri009 WHERE tbl_keri31 $str");
-        $sql->bind_param('ss',$date_start,$date_end);
+        $sql = parent::$connection->prepare("SELECT tbl_keri31.*, tbl_keri009.keri003 as number_sgb, tbl_keri009.keri047 as tracking_number, tbl_keri009.keri022 as weightKH, tbl_keri009.keri023 as priceKH FROM tbl_keri31 inner join tbl_keri009 on tbl_keri31.kg_bill = tbl_keri009.keri028 $str");
         return parent::select($sql);
     }
 }
