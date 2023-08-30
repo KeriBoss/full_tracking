@@ -31,7 +31,7 @@ class OrderShipment extends Database
      * Fields: 21
      */
     function insert($id_service,$agency,$code_referance,$type,$number_package,$weight,$sender_company,$sender_contact_name,$sender_contact_address,$sender_contact_phone,$sender_contact_email,$receiver_company_name,$receiver_contact_name,$receiver_contact_phone,$receiver_country,$postal_code,$receiver_city,$receiver_province,$receiver_address1,$receiver_address2,$receiver_address3,$kg_bill,$status){
-        $sql = parent::$connection->prepare("INSERT INTO `tbl_keri31`(`keri001`,`keri002`,`keri003`,`keri004`,`keri005`,`keri006`,`keri007`,`keri008`,`keri009`,`keri010`,`keri011`,`keri012`,`keri013`,`keri014`,`keri015`,`keri016`,`keri017`,`keri018`,`keri019`,`keri020`,`keri021`,`kg_bill`,`status`,`print_label`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'')");
+        $sql = parent::$connection->prepare("INSERT INTO `tbl_keri31`(`keri001`,`keri002`,`keri003`,`keri004`,`keri005`,`keri006`,`keri007`,`keri008`,`keri009`,`keri010`,`keri011`,`keri012`,`keri013`,`keri014`,`keri015`,`keri016`,`keri017`,`keri018`,`keri019`,`keri020`,`keri021`,`kg_bill`,`status`,`print_label`,`status_payment`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','')");
         $sql->bind_param('sssssssssssssssssssssis',$id_service,$agency,$code_referance,$type,$number_package,$weight,$sender_company,$sender_contact_name,$sender_contact_address,$sender_contact_phone,$sender_contact_email,$receiver_company_name,$receiver_contact_name,$receiver_contact_phone,$receiver_country,$postal_code,$receiver_city,$receiver_province,$receiver_address1,$receiver_address2,$receiver_address3,$kg_bill,$status);
         if($sql->execute() === true){
             return self::$connection->insert_id;
@@ -96,7 +96,7 @@ class OrderShipment extends Database
      * Function get all data of table order shipment
      */
     function sortShipmentByDate($date_start,$date_end){
-        $sql = parent::$connection->prepare("SELECT * FROM tbl_keri31 WHERE tbl_keri31.created_at between ? and ? desc");
+        $sql = parent::$connection->prepare("SELECT * FROM tbl_keri31 WHERE tbl_keri31.created_at between ? and ? order by created_at desc");
         $sql->bind_param('ss',$date_start,$date_end);
         return parent::select($sql);
     }
