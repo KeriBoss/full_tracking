@@ -30,9 +30,9 @@ class OrderShipment extends Database
      * Function insert data of table order shipment
      * Fields: 21
      */
-    function insert($id_service,$agency,$code_referance,$type,$number_package,$weight,$sender_company,$sender_contact_name,$sender_contact_address,$sender_contact_phone,$sender_contact_email,$receiver_company_name,$receiver_contact_name,$receiver_contact_phone,$receiver_country,$postal_code,$receiver_city,$receiver_province,$receiver_address1,$receiver_address2,$receiver_address3,$kg_bill,$status){
-        $sql = parent::$connection->prepare("INSERT INTO `tbl_keri31`(`keri001`,`keri002`,`keri003`,`keri004`,`keri005`,`keri006`,`keri007`,`keri008`,`keri009`,`keri010`,`keri011`,`keri012`,`keri013`,`keri014`,`keri015`,`keri016`,`keri017`,`keri018`,`keri019`,`keri020`,`keri021`,`kg_bill`,`status`,`print_label`,`status_payment`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','')");
-        $sql->bind_param('sssssssssssssssssssssis',$id_service,$agency,$code_referance,$type,$number_package,$weight,$sender_company,$sender_contact_name,$sender_contact_address,$sender_contact_phone,$sender_contact_email,$receiver_company_name,$receiver_contact_name,$receiver_contact_phone,$receiver_country,$postal_code,$receiver_city,$receiver_province,$receiver_address1,$receiver_address2,$receiver_address3,$kg_bill,$status);
+    function insert($id_service,$agency,$code_referance,$type,$number_package,$weight,$sender_company,$sender_contact_name,$sender_contact_address,$sender_contact_phone,$sender_contact_email,$receiver_company_name,$receiver_contact_name,$receiver_contact_phone,$receiver_country,$postal_code,$receiver_city,$receiver_province,$receiver_address1,$receiver_address2,$receiver_address3,$kg_bill,$status,$shp_code,$easy_shipment){
+        $sql = parent::$connection->prepare("INSERT INTO `tbl_keri31`(`keri001`,`keri002`,`keri003`,`keri004`,`keri005`,`keri006`,`keri007`,`keri008`,`keri009`,`keri010`,`keri011`,`keri012`,`keri013`,`keri014`,`keri015`,`keri016`,`keri017`,`keri018`,`keri019`,`keri020`,`keri021`,`kg_bill`,`status`,`print_label`,`status_payment`,`shp_code`,`easy_shipment`,`batch_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','',?,?,'')");
+        $sql->bind_param('sssssssssssssssssssssisss',$id_service,$agency,$code_referance,$type,$number_package,$weight,$sender_company,$sender_contact_name,$sender_contact_address,$sender_contact_phone,$sender_contact_email,$receiver_company_name,$receiver_contact_name,$receiver_contact_phone,$receiver_country,$postal_code,$receiver_city,$receiver_province,$receiver_address1,$receiver_address2,$receiver_address3,$kg_bill,$status,$shp_code,$easy_shipment);
         if($sql->execute() === true){
             return self::$connection->insert_id;
         }
@@ -44,6 +44,14 @@ class OrderShipment extends Database
     function update($id_shipment,$id_service,$agency,$code_referance,$type,$number_package,$weight,$sender_company,$sender_contact_name,$sender_contact_address,$sender_contact_phone,$sender_contact_email,$receiver_company_name,$receiver_contact_name,$receiver_contact_phone,$receiver_country,$postal_code,$receiver_city,$receiver_province,$receiver_address1,$receiver_address2,$receiver_address3){
         $sql = parent::$connection->prepare("UPDATE `tbl_keri31` SET `keri001`= ?,`keri002`= ?,`keri003`= ?,`keri004`= ?,`keri005`= ?,`keri006`= ?,`keri007`= ?,`keri008`= ?,`keri009`= ?,`keri010`= ?,`keri011`= ?,`keri012`= ?,`keri013`= ?,`keri014`= ?,`keri015`= ?,`keri016`= ?,`keri017`= ?,`keri018`= ?,`keri019`= ?,`keri020`= ?,`keri021`= ? WHERE id = ?");
         $sql->bind_param('sssssssssssssssssssssi',$id_service,$agency,$code_referance,$type,$number_package,$weight,$sender_company,$sender_contact_name,$sender_contact_address,$sender_contact_phone,$sender_contact_email,$receiver_company_name,$receiver_contact_name,$receiver_contact_phone,$receiver_country,$postal_code,$receiver_city,$receiver_province,$receiver_address1,$receiver_address2,$receiver_address3,$id_shipment);
+        return $sql->execute();
+    }
+    /**
+     * 
+     */
+    function updateBatch($id,$batch_code){
+        $sql = parent::$connection->prepare("UPDATE `tbl_keri31` SET `batch_code` = ? WHERE id = ?");
+        $sql->bind_param('si',$batch_code,$id);
         return $sql->execute();
     }
     /**

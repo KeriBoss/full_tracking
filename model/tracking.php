@@ -12,9 +12,9 @@ class Tracking extends Database
         return parent::select($sql);
     }
     //Insert new bill lading
-    function insert($tracking_number,$date_send,$date_ksg,$date_origin,$date_transit,$transport_tracking,$standard_ship,$policy,$paper_package){
-        $sql = parent::$connection->prepare("INSERT INTO `tracking`(`tracking_number`, `date_send`, `date_ksg`, `date_origin`, `date_transit`, `transport_tracking`, `standard_ship`, `policy`, `paper_package`) VALUES (?,?,?,?,?,?,?,?,?)");
-        $sql->bind_param('issssssss', $tracking_number,$date_send,$date_ksg,$date_origin,$date_transit,$transport_tracking,$standard_ship,$policy,$paper_package);
+    function insert($tracking_number,$date_send,$policy,$paper_package,$status){
+        $sql = parent::$connection->prepare("INSERT INTO `tracking`(`tracking_number`, `date_send`, `policy`, `paper_package`, `status`) VALUES (?,?,?,?,?)");
+        $sql->bind_param('sssss', $tracking_number,$date_send,$policy,$paper_package,$status);
         return $sql->execute();
     }
     /**
