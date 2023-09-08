@@ -27,6 +27,18 @@ class OrderShipment extends Database
         return parent::select($sql);
     }
     /**
+     * get order by tracking code
+     */
+    function getAllOrderByTracking($tracking_code){
+        $sql = parent::$connection->prepare("SELECT * FROM tbl_keri009 WHERE tbl_keri009.keri047 = ?");
+        $sql->bind_param('s', $tracking_code);
+        $arrLading = parent::select($sql);
+
+        $sql2 = parent::$connection->prepare("SELECT * FROM tbl_keri31 WHERE tbl_keri31.kg_bill = ?");
+        $sql2->bind_param('i', $arrLading[0]['keri028']);
+        return parent::select($sql2);
+    }
+    /**
      * Function insert data of table order shipment
      * Fields: 21
      */
@@ -163,5 +175,14 @@ class OrderShipment extends Database
         
         $sql = parent::$connection->prepare("SELECT tbl_keri31.*, tbl_keri009.keri003 as number_sgb, tbl_keri009.keri047 as tracking_number, tbl_keri009.keri022 as weightKH, tbl_keri009.keri023 as priceKH FROM tbl_keri31 inner join tbl_keri009 on tbl_keri31.kg_bill = tbl_keri009.keri028 $str");
         return parent::select($sql);
+    }
+
+    /**
+     * Get bill lading with status: in_transit
+     */
+    function updateLadingWithStatus($id,$status){
+        $sql = parent::$connection->prepare("UPDATE tracking SET `status` = ? WHERE tracking.tracking_number = ?");
+        $sql->bind_param('si',$status,$id);
+        return $sql->execute();
     }
 }

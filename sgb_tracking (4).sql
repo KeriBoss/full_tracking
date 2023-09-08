@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 01, 2023 lúc 12:27 PM
+-- Thời gian đã tạo: Th9 08, 2023 lúc 12:43 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.1.12
 
@@ -735,9 +735,12 @@ INSERT INTO `tbl_keri009` (`id`, `keri001`, `keri002`, `keri003`, `keri004`, `ke
 (66, '', '', '', '4', '23', '', '3', '4', '', '', 'HDB', '6', '', 'doc', 'Afghanistan', '', '', '', '', '', '', '4', '', '', '', '', '', '6032191406', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2830809360', '', '', '', 0, 0, 0, 0, ''),
 (67, '', '', '', 'New reiceiver', 'New sender', '', '1992 Vigna', 'address 1', '', '', 'FCG', '21', '', 'doc', '	 Sudan', '', '', '', '', '', '', '66', '', '', '', '', '', '7840110590', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000002', '', '', '', 0, 0, 0, 0, ''),
 (68, '', '', '', 'New reiceiver', 'New reiceiver', '', 'address 1', 'address 1', '', '', 'HDB', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '66', '', '', '', '', '', '1715256580', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000001', '', '', '', 0, 0, 0, 0, ''),
-(69, '', '', '', 'New reiceiver', 'Hoang Van Can', '', 'Ly Thuong Kiet, p.5, q.10, tp Ho Chi Minh', 'address 1', '', '', 'HDB', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '77', '', '', '', '', '', '1827747347', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000001', '', '', '', 0, 0, 0, 0, ''),
-(70, '', '', '', 'New reiceiver', 'New reiceiver', '', 'address 1', 'address 1', '', '', 'HDB', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '34', '', '', '', '', '', '3808619365', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000001', '', '', '', 0, 0, 0, 0, ''),
-(71, '', '', '', 'New reiceiver', 'New Sender', '', 'address Sender', 'address 1', '', '', 'ncc2', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '222', '', '', '', '', '', '6570463716', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000001', '', '', '', 0, 0, 0, 0, '');
+(69, '', '', '', 'New reiceiver', 'Hoang Van Can', '', 'Ly Thuong Kiet, p.5, q.10, tp Ho Chi Minh', 'address 1', '', '', 'HDB', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '77', '', '', '', '', '', '1827747347', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000006', '', '', '', 0, 0, 0, 0, ''),
+(70, '', '', '', 'New reiceiver', 'New reiceiver', '', 'address 1', 'address 1', '', '', 'HDB', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '34', '', '', '', '', '', '3808619365', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000007', '', '', '', 0, 0, 0, 0, ''),
+(71, '', '', '', 'New reiceiver', 'New Sender', '', 'address Sender', 'address 1', '', '', 'ncc2', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '222', '', '', '', '', '', '6570463716', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000008', '', '', '', 0, 0, 0, 0, ''),
+(72, '', '', '', 'New reiceiver 22', 'New reiceiver 29', '', 'address 19', 'address 1', '', '', 'ncc2', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '66', '', '', '', '', '', '2328829885', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ10000000010', '', '', '', 0, 0, 0, 0, ''),
+(73, '', '', '', 'Reiceiver AirL', 'Sender AirL', '', 'address 1', 'address 1', '', '', 'HDB', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '76', '', '', '', '', '', '2653678211', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000001', '', '', '', 0, 0, 0, 0, ''),
+(74, '', '', '', 'Reiceiver AirL', 'Sender AirL', '', 'address 1', 'address 1', '', '', 'HDB', '6', '', 'doc', '     Vietnam', '', '', '', '', '', '', '76', '', '', '', '', '', '4751610613', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'EZ1000000001', '', '', '', 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -1166,8 +1169,11 @@ INSERT INTO `tbl_keri31` (`id`, `keri001`, `keri002`, `keri003`, `keri004`, `ker
 (23, '7', '6', '', 'doc', '0', '3213', '324234', '4', '4', '4', '', '4', '4', '9999999999999999', '10', '44', '4', '', '234', '32', '', 5219434993, 'Đang chờ', 'Đã in label', '', '', '', '', '2023-08-28 16:19:19'),
 (25, '7', '6', '', 'pack', '0', '34', '355', '5325', '54', '54', '', '5325', '54', '543', '10', '543', '543', '', '5345', '5435', '', 7158197183, 'Đang chờ', 'Đã in label', '', '', '', '', '2023-08-29 16:43:05'),
 (33, '39', '21', '3213', 'doc', '2', '66', 'Company THNN', 'New sender', '1992 Vigna', '0123456789', 'Admin@gmail.com', 'Company 29', 'New reiceiver', '0125215255', '258', '214214', '1992 Vilag', 'Quang Nam', 'address 1', 'address 2', '', 7840110590, 'Đang chờ', '', '', '', '', '', '2023-09-01 11:28:15'),
-(36, '7', '6', '', 'doc', '0', '34', 'Company 29', 'New reiceiver', 'address 1', '0123145152', '', 'Company 29', 'New reiceiver', '123145152', '293', '12455', 'Ho Chi Minh', '', 'address 1', 'address 2', '', 3808619365, 'Đang chờ', '', '', 'trk_a3090da8054c46189d6e9ff0ca775cbb', 'shp_7e16bbd39fab434799c4b60f316b3585', 'batch_5c3be4b78cdf4505b527186f512066ba', '2023-09-01 15:05:49'),
-(37, '41', '6', '3123', 'doc', '0', '222', 'Company 299', 'New Sender', 'address Sender', '1231451520', 'adnew@gmail.com', 'Company 29 new', 'New reiceiver', '123145152', '293', '12455', 'Ho Chi Minh', '', 'address 1', 'address 2', '', 6570463716, 'Đang chờ', '', '', 'trk_a3090da8054c46189d6e9ff0ca775cbb', 'shp_8bfe3a9ad8544e20bb07c1317cf18a56', 'batch_fe317947734a4930b9b42249026ea0d6', '2023-09-01 15:07:20');
+(36, '7', '6', '', 'doc', '0', '34', 'Company 29', 'New reiceiver', 'address 1', '0123145152', '', 'Company 29', 'New reiceiver', '123145152', '293', '12455', 'Ho Chi Minh', '', 'address 1', 'address 2', '', 3808619365, 'Đang chờ', '', '', 'trk_a3090da8054c46189d6e9ff0ca775cbb', 'shp_7e16bbd39fab434799c4b60f316b3585', 'batch_1860865b319b44f88efcf5c2cdfafa3e', '2023-09-01 15:05:49'),
+(37, '41', '6', '3123', 'doc', '0', '222', 'Company 299', 'New Sender', 'address Sender', '1231451520', 'adnew@gmail.com', 'Company 29 new', 'New reiceiver', '123145152', '293', '12455', 'Ho Chi Minh', '', 'address 1', 'address 2', '', 6570463716, 'Đang chờ', '', '', 'trk_a3090da8054c46189d6e9ff0ca775cbb', 'shp_8bfe3a9ad8544e20bb07c1317cf18a56', 'batch_41a1b7f487094a7d9677d6dc2be8f3cd', '2023-09-01 15:07:20'),
+(38, '41', '6', '31313', 'doc', '2', '66', 'Company 29', 'New reiceiver 29', 'address 19', '0123145152', 'admin11283@gmail.com', 'Company Receiver 2', 'New reiceiver 22', '1231451520', '293', '12455', 'Ho Chi Minh', '', 'address 1', 'address 2', '', 2328829885, 'Đang chờ', 'Đã in label', '', 'trk_a3090da8054c46189d6e9ff0ca775cbb', 'shp_f6dd9d0db43e4b56a51fe2d1ff52db89', 'batch_571be735364747c0b214436d951fa639', '2023-09-04 10:55:13'),
+(39, '7', '6', '', 'doc', '0', '76', 'Comapny AirL', 'Sender AirL', 'address 1', '0123145152', 'admin11283@gmail.com', 'Company 2999', 'Reiceiver AirL', '0123145152', '293', '12455', 'Ho Chi Minh', '', 'address 1', 'address 2', '', 2653678211, 'Đang chờ', '', '', 'trk_a3090da8054c46189d6e9ff0ca775cbb', 'shp_e2daef7a0ed34129a370a41c10db2206', '', '2023-09-08 16:19:47'),
+(40, '7', '6', '', 'doc', '0', '76', 'Comapny AirL', 'Sender AirL', 'address 1', '0123145152', 'admin11283@gmail.com', 'Company 2999', 'Reiceiver AirL', '0123145152', '293', '12455', 'Ho Chi Minh', '', 'address 1', 'address 2', '', 4751610613, 'Đang chờ', '', '', 'trk_a3090da8054c46189d6e9ff0ca775cbb', 'shp_7f600a46864748eaac4856df540b932b', '', '2023-09-08 16:20:23');
 
 -- --------------------------------------------------------
 
@@ -1202,11 +1208,14 @@ INSERT INTO `tracking` (`id`, `tracking_number`, `date_send`, `policy`, `paper_p
 (10, '7921134479', '0000-00-00', 'Sender', 'Package', '', '2023-08-30 11:50:26'),
 (11, '9031090047', '0000-00-00', 'Sender', 'Package', '', '2023-08-30 11:50:26'),
 (12, '2830809360', '0000-00-00', 'Sender', 'Package', '', '2023-08-30 17:25:34'),
-(13, '0', '0000-00-00', 'Sender', 'Package', '', '2023-09-01 11:28:15'),
-(14, 'EZ1000000001', '0000-00-00', 'Sender', 'Package', 'pre_transit', '2023-09-01 14:39:51'),
-(15, 'EZ1000000001', '0000-00-00', 'Sender', 'Package', 'pre_transit', '2023-09-01 14:50:56'),
-(16, 'EZ1000000001', '0000-00-00', 'Sender', 'Package', 'pre_transit', '2023-09-01 15:05:49'),
-(17, 'EZ1000000001', '0000-00-00', 'Sender', 'Package', 'pre_transit', '2023-09-01 15:07:20');
+(13, '0', '0000-00-00', 'Sender', 'Package', 'in_transit', '2023-09-01 11:28:15'),
+(14, 'EZ1000000001', '0000-00-00', 'Sender', 'Package', 'in_transit', '2023-09-01 14:39:51'),
+(15, 'EZ1000000006', '0000-00-00', 'Sender', 'Package', 'in_transit', '2023-09-01 14:50:56'),
+(16, 'EZ1000000007', '0000-00-00', 'Sender', 'Package', 'pre_transit', '2023-09-01 15:05:49'),
+(17, 'EZ1000000008', '0000-00-00', 'Sender', 'Package', 'pre_transit', '2023-09-01 15:07:20'),
+(18, 'EZ10000000010', '0000-00-00', 'Sender', 'Package', 'pre_transit', '2023-09-04 10:55:13'),
+(19, 'EZ1000000001', '0000-00-00', 'Sender', 'Package', 'pre_transit', '2023-09-08 16:19:47'),
+(20, 'EZ1000000001', '0000-00-00', 'Sender', 'Package', 'pre_transit', '2023-09-08 16:20:23');
 
 -- --------------------------------------------------------
 
@@ -1399,7 +1408,7 @@ ALTER TABLE `tbl_keri004`
 -- AUTO_INCREMENT cho bảng `tbl_keri009`
 --
 ALTER TABLE `tbl_keri009`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_keri010`
@@ -1435,13 +1444,13 @@ ALTER TABLE `tbl_keri024`
 -- AUTO_INCREMENT cho bảng `tbl_keri31`
 --
 ALTER TABLE `tbl_keri31`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT cho bảng `tracking`
 --
 ALTER TABLE `tracking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `travel_history`

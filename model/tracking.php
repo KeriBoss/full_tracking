@@ -41,4 +41,18 @@ class Tracking extends Database
         $sql->bind_param('i', $kg_bill);
         return parent::select($sql);
     }
+    /**
+     * 
+     */
+    function getTrackingInTransit(){
+        $sql = parent::$connection->prepare("SELECT * FROM tracking WHERE status = 'in_transit'");
+        return parent::select($sql);
+    }
+    /**
+     * 
+     */
+    function getTrackingInPreTransit(){
+        $sql = parent::$connection->prepare("SELECT * FROM tracking WHERE status = 'pre_transit'");
+        return parent::select($sql);
+    }
 }
